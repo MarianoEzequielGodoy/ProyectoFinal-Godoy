@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.iconCart{
+    display: flex;
+    margin-right: 25px;
+    align-items: center;
+    justify-content: center;
+}
+
+.iconCart a svg{
+    color: black;
+    width: 25px;
+    height: 25px;
+    z-index: 0;
+}
+
+.cartNumber{
+    color:black;
+}
