@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import './itemListContainer.css'
+
+
 
 const ItemListContainer = () => {
 
@@ -15,17 +19,20 @@ const ItemListContainer = () => {
 
 
   return (
-    <div>
+    <div className="container">
       <h1 style={{textAlign:'center', fontWeight:'bold', color:'#333'}}>Lista de Productos</h1>
-      <div>
+      <div className="flex-container">
         {
           data.map(prod => (
-            <div style={{display:'flex', background:'#FFF', margin:'10px 0', borderRadius:'5px', boxShadow:'0px 3px 3px rgba(0,0,0,0.1)', padding:'10px'}}>
+            <div className="card">
+              <Link to={`/product/${prod.id}`}>
               <h2>{prod.title}</h2>
-              <img style={{width:'30%', height:'40%'}} src={prod.image} alt="" />
+              </Link>
+              <img className='classImg' src={prod.image} alt="" />
               <p>${prod.price}</p>
+              <button className='button'>Agregar al Carrito</button>
+              <button className='button'>Ver Detalles</button>
             </div>
-
           )
           )
         }
