@@ -30,8 +30,10 @@ const ItemListContainer = () => {
               </Link>
               <img className='classImg' src={prod.image} alt="" />
               <p>${prod.price}</p>
-              <button className='button'>Agregar al Carrito</button>
-              <button className='button'>Ver Detalles</button>
+              <div className='card-buttons'>
+              <button>Agregar al Carrito</button>
+              <button>Ver Detalles</button>
+              </div>
             </div>
           )
           )
