@@ -1,6 +1,6 @@
-import React, { useState, createContext } from "react"
+    import React, { useState, createContext } from "react";
 
-export const CartContext = createContext({
+    export const CartContext = createContext({
     cart: [],
     clearCart: () => {},
     isInCart: () => {},
@@ -8,53 +8,56 @@ export const CartContext = createContext({
     removeFromCart: () => {},
     getTotalQuantity: () => {},
     getTotal: () => {}
-});
+    });
 
-const CartProvider = (props) => {
-    const [cart, setCart] = useState([])
+
+    const CartProvider = (props) => {
+
+    const [cart, setCart] = useState([]);
 
     const clearCart = () => {
-        setCart([])
+        setCart([]);
     }
 
     const isInCart = (id) => {
-        return cart.find((item) => item.id === id) ? true : false
+        return cart.find((item) => item.id === id) ? true : false;
     }
 
     const addToCart = (item, quantity) => {
-        if(isInCart(item.id)){
-            setCart(cart.map((cartItem) =>{
-                if(cartItem.id === item.id) {
-                    return {...cartItem, quantity: cartItem.quantity + quantity}
-                }
-                return cartItem
-            }))
-        }else {
-            setCart([...cart, {...item, quantity}])
+        if (isInCart(item.id)) {
+        setCart(cart.map((cartItem) => {
+            if (cartItem.id === item.id) {
+            return { ...cartItem, quantity: cartItem.quantity + quantity };
+            }
+            return cartItem;
+        }));
+        } else {
+        setCart([...cart, { ...item, quantity }]);
         }
-    }
-
+    };
+    
     const removeFromCart = (id) => {
         const newCart = cart.filter((item) => item.id !== id)
-        setCart(newCart)
-    }
+        setCart(newCart);
+    };
+
     const getTotalQuantity = () => {
         let cant = 0
         cart.forEach((e) => cant += e.quantity)
         return cant
-    }
+    };
 
-const getTotal = () => {
-    let total = 0
-    cart.forEach((e) => total += (e.quantity*e.price))
-    return total
-}
+    const getTotal = () => {
+        let total = 0
+        cart.forEach((e) => total += (e.quantity*e.price))
+        return total        
+    };
 
-return(
-    <CartContext.Provider value={{ cart, clearCart, addToCart, removeFromCart, getTotalQuantity, getTotal}}>
+    return (
+        <CartContext.Provider value={{ cart, clearCart, addToCart, removeFromCart, getTotalQuantity, getTotal }}>
         {props.children}
-    </CartContext.Provider>
-)
-}
+        </CartContext.Provider>
+    );
+    };
 
-export default CartProvider
+    export default CartProvider;

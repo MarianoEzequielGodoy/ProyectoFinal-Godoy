@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { getDocs, getFirestore, collection } from 'firebase/firestore'
 import { Link } from 'react-router-dom'
-import '../ItemListContainer/itemListContainer.css'
+import '../ItemList/itemListContainer.css'
 import { CartContext } from '../../Context/CartContext'
 
 
@@ -26,8 +26,9 @@ useEffect(() => {
 
   }, [])
 
+
 return (
-  
+  <>
 <div className='flex-container'>
 
   {items ? (
@@ -53,6 +54,8 @@ return (
   </div>
   )}
 </div>
+  
+  </>
 )
 }
 
